@@ -3,90 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love 💖</title>
+    <title>For You Love</title>
     <style>
         body {
-            background-color: #ffe6f2;
+            font-family: Arial, sans-serif;
             text-align: center;
-            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            color: white;
+            margin: 0;
+            padding: 0;
         }
         h1 {
-            color: #d63384;
-            font-size: 3rem;
-            margin-top: 20px;
+            margin-top: 50px;
         }
-        .message {
-            font-size: 1.8rem;
-            color: #e60046;
-            margin: 20px;
+        .heart {
+            font-size: 50px;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .message-box {
+            margin: 20px auto;
             padding: 20px;
-            border: 2px solid #d63384;
-            border-radius: 15px;
-            background: white;
-            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            width: 80%;
         }
-        .flowers {
-            margin-top: 30px;
+        .button {
+            background: #ff4b7b;
+            padding: 10px 20px;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
         }
-        .flowers img {
-            width: 100px;
-            margin: 10px;
-            animation: bloom 2s ease-in-out infinite alternate;
-        }
-        @keyframes bloom {
-            from { transform: scale(0.8); }
-            to { transform: scale(1); }
-        }
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
+        .hidden-message {
+            display: none;
+            font-size: 20px;
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <h1>For My One and Only 💖</h1>
-    <div class="message">My love, you are my sunshine, my joy, and my heart's greatest treasure. Every moment with you is a blessing, and I cherish you more than words can express. Happy Valentine's Day! 🌹</div>
-    <div class="flowers">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263063.png" alt="Flower">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263063.png" alt="Flower">
-        <img src="https://cdn-icons-png.flaticon.com/512/263/263063.png" alt="Flower">
+    <h1>Happy Valentine's Day, My Love! ❤️</h1>
+    <div class="heart">❤️</div>
+    <div class="message-box">
+        <p>Click the button below for a special surprise!</p>
+        <button class="button" onclick="showMessage()">Show Surprise</button>
+        <p class="hidden-message" id="loveMessage">You are my everything! I love You 💖</p>
     </div>
-    <canvas id="heartCanvas"></canvas>
+    
     <script>
-        const canvas = document.getElementById("heartCanvas");
-        const ctx = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        let hearts = [];
-        function createHeart() {
-            hearts.push({
-                x: Math.random() * canvas.width,
-                y: canvas.height + 10,
-                size: Math.random() * 5 + 2,
-                speed: Math.random() * 2 + 1,
-                opacity: Math.random()
-            });
+        function showMessage() {
+            document.getElementById('loveMessage').style.display = 'block';
         }
-        function drawHearts() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            hearts.forEach((heart, index) => {
-                ctx.globalAlpha = heart.opacity;
-                ctx.fillStyle = "#ff4d6d";
-                ctx.beginPath();
-                ctx.arc(heart.x, heart.y, heart.size, 0, Math.PI * 2);
-                ctx.fill();
-                heart.y -= heart.speed;
-                if (heart.y < -10) hearts.splice(index, 1);
-            });
-            requestAnimationFrame(drawHearts);
-        }
-        setInterval(createHeart, 100);
-        drawHearts();
     </script>
 </body>
 </html>
