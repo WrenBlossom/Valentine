@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You Love</title>
+    <title>My Love for You</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,10 +19,11 @@
         .heart {
             font-size: 50px;
             animation: heartbeat 1s infinite;
+            cursor: pointer;
         }
         @keyframes heartbeat {
             0% { transform: scale(1); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.5); }
             100% { transform: scale(1); }
         }
         .message-box {
@@ -46,20 +47,75 @@
             font-size: 20px;
             margin-top: 20px;
         }
+        .love-meter {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+        .love-bar {
+            width: 0;
+            height: 20px;
+            background: #ff4b7b;
+            border-radius: 10px;
+            transition: width 2s;
+        }
+        .love-container {
+            width: 80%;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            padding: 10px;
+            margin: auto;
+        }
+        .game-box {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            width: 80%;
+            margin: auto;
+        }
     </style>
 </head>
 <body>
     <h1>Happy Valentine's Day, My Love! ❤️</h1>
-    <div class="heart">❤️</div>
+    <div class="heart" onclick="increaseLove()">❤️</div>
     <div class="message-box">
         <p>Click the button below for a special surprise!</p>
         <button class="button" onclick="showMessage()">Show Surprise</button>
-        <p class="hidden-message" id="loveMessage">You are my everything! I love You 💖</p>
+        <p class="hidden-message" id="loveMessage">You are my everything! 💖</p>
+    </div>
+    
+    <div class="love-meter">
+        <p>Love Meter:</p>
+        <div class="love-container">
+            <div class="love-bar" id="loveBar"></div>
+        </div>
+    </div>
+    
+    <div class="game-box">
+        <p>Guess a number between 1 and 10 to win my heart! 💘</p>
+        <input type="number" id="guess" min="1" max="10">
+        <button class="button" onclick="checkGuess()">Check</button>
+        <p id="gameMessage"></p>
     </div>
     
     <script>
         function showMessage() {
             document.getElementById('loveMessage').style.display = 'block';
+        }
+        
+        function increaseLove() {
+            let loveBar = document.getElementById('loveBar');
+            let currentWidth = parseInt(loveBar.style.width) || 0;
+            if (currentWidth < 100) {
+                loveBar.style.width = (currentWidth + 20) + '%';
+            }
+        }
+        
+        function checkGuess() {
+            let guess = document.getElementById('guess').value;
+            let randomNum = Math.floor(Math.random() * 10) + 1;
+            let message = guess == randomNum ? "You guessed right! You have my heart! ❤️" : "Oops! Try again!";
+            document.getElementById('gameMessage').innerText = message;
         }
     </script>
 </body>
