@@ -47,24 +47,6 @@
             font-size: 20px;
             margin-top: 20px;
         }
-        .love-meter {
-            margin-top: 30px;
-            font-size: 20px;
-        }
-        .love-bar {
-            width: 0;
-            height: 20px;
-            background: #ff4b7b;
-            border-radius: 10px;
-            transition: width 2s;
-        }
-        .love-container {
-            width: 80%;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            padding: 10px;
-            margin: auto;
-        }
         .game-box {
             margin-top: 30px;
             padding: 20px;
@@ -77,24 +59,23 @@
 </head>
 <body>
     <h1>Happy Valentine's Day, My Love! ❤️</h1>
-    <div class="heart" onclick="increaseLove()">❤️</div>
+    <div class="heart" onclick="showLove()">❤️</div>
     <div class="message-box">
         <p>Click the button below for a special surprise!</p>
         <button class="button" onclick="showMessage()">Show Surprise</button>
         <p class="hidden-message" id="loveMessage">You are my everything! 💖</p>
     </div>
     
-    <div class="love-meter">
-        <p>Love Meter:</p>
-        <div class="love-container">
-            <div class="love-bar" id="loveBar"></div>
-        </div>
-    </div>
-    
     <div class="game-box">
-        <p>Guess a number between 1 and 10 to win my heart! 💘</p>
-        <input type="number" id="guess" min="1" max="10">
-        <button class="button" onclick="checkGuess()">Check</button>
+        <p>Which of these is the best reason why I love you? 💘</p>
+        <select id="loveChoice">
+            <option value="">--Choose an answer--</option>
+            <option value="wrong1">Because you're cute 😍</option>
+            <option value="wrong2">Because you make good food 🍕</option>
+            <option value="right">Because you're my soulmate 💞</option>
+            <option value="wrong3">Because you tell funny jokes 😂</option>
+        </select>
+        <button class="button" onclick="checkLoveAnswer()">Check</button>
         <p id="gameMessage"></p>
     </div>
     
@@ -103,18 +84,13 @@
             document.getElementById('loveMessage').style.display = 'block';
         }
         
-        function increaseLove() {
-            let loveBar = document.getElementById('loveBar');
-            let currentWidth = parseInt(loveBar.style.width) || 0;
-            if (currentWidth < 100) {
-                loveBar.style.width = (currentWidth + 20) + '%';
-            }
+        function showLove() {
+            alert('I love you more every day! ❤️');
         }
         
-        function checkGuess() {
-            let guess = document.getElementById('guess').value;
-            let randomNum = Math.floor(Math.random() * 10) + 1;
-            let message = guess == randomNum ? "You guessed right! You have my heart! ❤️" : "Oops! Try again!";
+        function checkLoveAnswer() {
+            let choice = document.getElementById('loveChoice').value;
+            let message = (choice === "right") ? "Correct! You are my soulmate! 💖" : "Oops! Try again!";
             document.getElementById('gameMessage').innerText = message;
         }
     </script>
