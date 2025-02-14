@@ -51,7 +51,7 @@
 </head>
 <body>
     <h1>Happy Valentine's Day, My Love! ❤️</h1>
-    <div class="heart" onclick="showLove()">❤️ Click Me <br></div>
+    <div class="heart" onclick="showLove()">❤️</div>
     <div class="message-box">
         <p>Click the button below for a special surprise!</p>
         <button class="button" onclick="showMessage()">Show Surprise</button>
@@ -84,93 +84,33 @@
         <button class="button" onclick="checkSentence()">Submit</button>
         <p id="sentenceMessage"></p>
     </div>
-
-    <div class="game-box">
-        <p>Love Matching Game! Match the correct pairs 💖</p>
-        <p>Match "Heart" with?</p>
-        <select id="matchGame">
-            <option value="">--Choose an answer--</option>
-            <option value="wrong">Pizza 🍕</option>
-            <option value="wrong">TV 📺</option>
-            <option value="right">Love 💕</option>
-            <option value="wrong">Phone 📱</option>
-        </select>
-        <button class="button" onclick="checkMatch()">Check</button>
-        <p id="matchMessage"></p>
-    </div>
-
-    <div class="game-box">
-        <p>Guess the number I'm thinking of (1-10) 💘</p>
-        <input type="number" id="guessNumber">
-        <button class="button" onclick="checkNumber()">Check</button>
-        <p id="numberMessage"></p>
-    </div>
-
-    <div class="game-box">
-        <p>What is my favorite thing about you? 💖</p>
-        <input type="text" id="favThing">
-        <button class="button" onclick="checkFavThing()">Submit</button>
-        <p id="favThingMessage"></p>
-    </div>
-
-    <div class="game-box">
-        <p>Finish the love quote: "You complete ______" ❤️</p>
-        <input type="text" id="loveQuote">
-        <button class="button" onclick="checkQuote()">Submit</button>
-        <p id="quoteMessage"></p>
-    </div>
     
     <script>
         function showMessage() {
-    let message = document.getElementById('loveMessage');
-    message.style.display = (message.style.display === 'block') ? 'none' : 'block';
-}
-
-function showLove() {
-    alert('I love you more every day! ❤️');
-}
-
-function checkLoveAnswer() {
-    let choice = document.getElementById('loveChoice').value;
-    let message = (choice === "right") ? "Correct! You are my soulmate! 💖" : "Oops! Try again!";
-    document.getElementById('gameMessage').innerText = message;
-}
-
-function checkWord() {
-    let word = document.getElementById('wordGuess').value.trim().toLowerCase();
-    let message = (word === "love") ? "Correct! Love is in the air! 💕" : "Try again!";
-    document.getElementById('wordMessage').innerText = message;
-}
-
-function checkNumber() {
-    let number = parseInt(document.getElementById('guessNumber').value);
-    let correctNumber = 7; // You can change this
-    let message = (number === correctNumber) ? "Yes! You guessed it! 💘" : "Nope! Try again!";
-    document.getElementById('numberMessage').innerText = message;
-}
-
-function checkFavThing() {
-    document.getElementById('favThingMessage').innerText = "Everything! 💖";
-}
-
-function checkQuote() {
-    let quote = document.getElementById('loveQuote').value.trim().toLowerCase();
-    let message = (quote === "me") ? "Yes! You complete me! ❤️" : "Try again!";
-    document.getElementById('quoteMessage').innerText = message;
-}
-
-function checkSentence() {
-    let sentence = document.getElementById('fillBlank').value.trim();
-    let message = (sentence !== "") ? `Aww, that's so sweet! 💕` : "Please enter something!";
-    document.getElementById('sentenceMessage').innerText = message;
-}
-
-function checkMatch() {
-    let match = document.getElementById('matchGame').value;
-    let message = (match === "right") ? "Correct! Love is the perfect match! 💖" : "Oops! Try again!";
-    document.getElementById('matchMessage').innerText = message;
-}
-
+            document.getElementById('loveMessage').style.display = 'block';
+        }
+        
+        function showLove() {
+            alert('I love you more every day! ❤️');
+        }
+        
+        function checkLoveAnswer() {
+            let choice = document.getElementById('loveChoice').value;
+            let message = (choice === "right") ? "Correct! You are my soulmate! 💖" : "Oops! Try again!";
+            document.getElementById('gameMessage').innerText = message;
+        }
+        
+        function checkWord() {
+            let word = document.getElementById('wordGuess').value.toLowerCase();
+            let message = (word === "love") ? "Correct! Love is in the air! 💕" : "Try again!";
+            document.getElementById('wordMessage').innerText = message;
+        }
+        
+        function checkSentence() {
+            let sentence = document.getElementById('fillBlank').value;
+            let message = sentence ? `Aww! You love me more than ${sentence}? That's so sweet! 💖` : "Please enter something!";
+            document.getElementById('sentenceMessage').innerText = message;
+        }
     </script>
 </body>
-</html>
+</html> 
