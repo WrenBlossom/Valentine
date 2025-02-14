@@ -133,8 +133,8 @@
 
         function checkNumber() {
             let number = parseInt(document.getElementById('numberGuess').value);
-            let correctNumber = Math.floor(Math.random() * 10) + 1;
-            let message = (number === correctNumber) ? "Wow! You guessed it right! 🎉" : `Nope! I was thinking of ${correctNumber}. Try again!`;
+            let correctNumber = 10; // Always 10
+            let message = (number === correctNumber) ? "Wow! You guessed it right! 🎉" : `Nope! I was thinking of different number. Try again!`;
             document.getElementById('numberMessage').innerText = message;
         }
         
