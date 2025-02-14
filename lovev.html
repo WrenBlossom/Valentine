@@ -84,7 +84,26 @@
         <button class="button" onclick="checkSentence()">Submit</button>
         <p id="sentenceMessage"></p>
     </div>
+
+    <div class="game-box">
+        <p>Guess the number I'm thinking of (1-10)! 🎲</p>
+        <input type="number" id="numberGuess" min="1" max="10">
+        <button class="button" onclick="checkNumber()">Check</button>
+        <p id="numberMessage"></p>
+    </div>
+
+    <div class="game-box">
+        <p>How many hearts are in love? 💕💕💕💕💕</p>
+        <input type="number" id="heartCount">
+        <button class="button" onclick="checkHearts()">Submit</button>
+        <p id="heartMessage"></p>
+    </div>
     
+        <div class="game-box">
+        <p>End the game with a big surprise! 🎉</p>
+        <button class="button" onclick="endGame()">Click for a Surprise</button>
+        <p id="endMessage"></p>
+    </div>
     <script>
         function showMessage() {
             document.getElementById('loveMessage').style.display = 'block';
@@ -111,6 +130,23 @@
             let message = sentence ? `Aww! You love me more than ${sentence}? That's so sweet! 💖` : "Please enter something!";
             document.getElementById('sentenceMessage').innerText = message;
         }
+
+        function checkNumber() {
+            let number = parseInt(document.getElementById('numberGuess').value);
+            let correctNumber = Math.floor(Math.random() * 10) + 1;
+            let message = (number === correctNumber) ? "Wow! You guessed it right! 🎉" : `Nope! I was thinking of ${correctNumber}. Try again!`;
+            document.getElementById('numberMessage').innerText = message;
+        }
+        
+        function checkHearts() {
+            let count = parseInt(document.getElementById('heartCount').value);
+            let message = (count === 5) ? "Correct! You counted all the love! 💕" : "Oops! Try again!";
+            document.getElementById('heartMessage').innerText = message;
+        }
+          function endGame() {
+            document.getElementById('endMessage').innerText = "Congratulations, my love! You won the game! 🎉💖";
+            alert("You're my forever Valentine! 💘");
+        }
     </script>
 </body>
-</html> 
+</html>
