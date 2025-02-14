@@ -26,7 +26,7 @@
             50% { transform: scale(1.5); }
             100% { transform: scale(1); }
         }
-        .message-box {
+        .message-box, .game-box {
             margin: 20px auto;
             padding: 20px;
             background: rgba(255, 255, 255, 0.2);
@@ -46,14 +46,6 @@
             display: none;
             font-size: 20px;
             margin-top: 20px;
-        }
-        .game-box {
-            margin-top: 30px;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            width: 80%;
-            margin: auto;
         }
     </style>
 </head>
@@ -79,6 +71,20 @@
         <p id="gameMessage"></p>
     </div>
     
+    <div class="game-box">
+        <p>Unscramble the word: "VOEL" 💝</p>
+        <input type="text" id="wordGuess">
+        <button class="button" onclick="checkWord()">Check</button>
+        <p id="wordMessage"></p>
+    </div>
+
+    <div class="game-box">
+        <p>Complete the sentence: "I love you more than ______" 💕</p>
+        <input type="text" id="fillBlank">
+        <button class="button" onclick="checkSentence()">Submit</button>
+        <p id="sentenceMessage"></p>
+    </div>
+    
     <script>
         function showMessage() {
             document.getElementById('loveMessage').style.display = 'block';
@@ -92,6 +98,18 @@
             let choice = document.getElementById('loveChoice').value;
             let message = (choice === "right") ? "Correct! You are my soulmate! 💖" : "Oops! Try again!";
             document.getElementById('gameMessage').innerText = message;
+        }
+        
+        function checkWord() {
+            let word = document.getElementById('wordGuess').value.toLowerCase();
+            let message = (word === "love") ? "Correct! Love is in the air! 💕" : "Try again!";
+            document.getElementById('wordMessage').innerText = message;
+        }
+        
+        function checkSentence() {
+            let sentence = document.getElementById('fillBlank').value;
+            let message = sentence ? `Aww! You love me more than ${sentence}? That's so sweet! 💖` : "Please enter something!";
+            document.getElementById('sentenceMessage').innerText = message;
         }
     </script>
 </body>
